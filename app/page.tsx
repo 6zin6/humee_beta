@@ -84,7 +84,7 @@ export default function Home() {
               <div className="absolute -top-10 md:-top-20 -right-4 md:-right-12 w-12 md:w-auto">
                 <Image src={aboutDeco} alt="デコレーション"/>
               </div>
-              <div className="absolute -top-3 left-1/2 w-[80%] md:w-auto text-center md:text-left transform -translate-x-1/2 md:translate-x-0 md:left-0 bg-white dark:bg-black border-2 border-solid border-[--primary] rounded-2xl">
+              <div className="absolute -top-3 left-1/2 w-[80%] md:w-auto text-center md:text-left transform -translate-x-1/2 md:translate-x-0 md:left-0 bg-white dark:bg-black border-2 border-solid border-primary rounded-2xl">
                 <h3 className="text-lg font-bold px-3 md:px-8 text-primary">Humeeで出来ること</h3>
               </div>
               <CardContent className="pt-10 px-0 pb-6 md:pb-10 bg-primary rounded-xl">
