@@ -80,7 +80,7 @@ export default function Home() {
                 障害者施設専門のクラウド<br className="md:hidden"/>ソーシングプラットフォームです。
               </p>
             </div>
-            <Card className="max-w-4xl mx-auto relative">
+            <Card className="max-w-4xl mx-auto relative border-none">
               <div className="absolute -top-10 md:-top-20 -right-4 md:-right-12 w-12 md:w-auto">
                 <Image src={aboutDeco} alt="デコレーション"/>
               </div>
