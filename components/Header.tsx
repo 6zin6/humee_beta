@@ -138,7 +138,7 @@ const Header = () => {
                             </Button>
                         </SheetTrigger>
                         <SheetContent side="right" className="w-[100vw] h-[100vh] sm:w-[350px]">
-                            <div className="flex flex-col h-full">
+                            <div className="flex flex-col h-[100svh]">
                                 <div className="flex items-center justify-between mb-6">
                                     <Image src="/images/logo.svg" alt="ロゴ" width={150} height={100}/>
                                 </div>
@@ -157,8 +157,8 @@ const Header = () => {
                                     
                                 </div>
                                 
-                                <div className="mb-4">
-                                    <Button size="lg" variant="secondary" asChild className="w-[100%]">
+                                <div className="flex-1">
+                                    <Button size="lg" variant="secondary" asChild className="w-full mb-4">
                                         <Link 
                                             href="/contact" 
                                             onClick={() => setIsOpen(false)}
@@ -167,49 +167,51 @@ const Header = () => {
                                                 <ArrowRight className="ml-2 h-4 w-4" />
                                         </Link>
                                     </Button>
+
+                                    <Separator className="mb-4"/>
+
+                                    {!isAuthPage && (
+                                        <>
+                                            {session ? (
+                                                <LogoutButton/>
+                                            ) : loading ? (
+                                                <Button variant="outline" disabled>読み込み中...</Button>
+                                                
+                                            ) : (
+                                                <>
+                                                    <Button variant="outline" className="w-full mb-3" asChild>
+                                                        <Link href="/login" className="dark:text-white">
+                                                            ログイン
+                                                        </Link>
+                                                    </Button>
+                                                    <div className="space-y-2">
+                                                        <Button asChild className="w-full flex items-center justify-center">
+                                                            <Link href="/register/company">
+                                                                <span className="flex items-center">
+                                                                    <Building className="mr-2 h-4 w-4" />
+                                                                    企業として登録
+                                                                </span>
+                                                                <ArrowRight className="h-4 w-4 ml-3" />
+                                                            </Link>
+                                                        </Button>
+                                                        
+                                                        <Button asChild className="w-full flex items-center justify-center">
+                                                            <Link href="/register/facility">
+                                                                <span className="flex items-center">
+                                                                    <Users className="mr-2 h-4 w-4" />
+                                                                    施設として登録
+                                                                </span>
+                                                                <ArrowRight className="h-4 w-4 ml-3" />
+                                                            </Link>
+                                                        </Button>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </>
+                                    )}
                                 </div>
                                 
-                                <Separator className="mb-4"/>
-
-                                {!isAuthPage && (
-                                    <>
-                                        {session ? (
-                                            <LogoutButton/>
-                                        ) : loading ? (
-                                            <Button variant="outline" disabled>読み込み中...</Button>
-                                            
-                                        ) : (
-                                            <>
-                                                <Button variant="outline" className="mb-3" asChild>
-                                                    <Link href="/login" className="dark:text-white">
-                                                        ログイン
-                                                    </Link>
-                                                </Button>
-                                                <div className="space-y-2">
-                                                    <Button asChild className="w-full flex items-center justify-center">
-                                                        <Link href="/register/company">
-                                                            <span className="flex items-center">
-                                                                <Building className="mr-2 h-4 w-4" />
-                                                                企業として登録
-                                                            </span>
-                                                            <ArrowRight className="h-4 w-4 ml-3" />
-                                                        </Link>
-                                                    </Button>
-                                                    
-                                                    <Button asChild className="w-full flex items-center justify-center">
-                                                        <Link href="/register/facility">
-                                                            <span className="flex items-center">
-                                                                <Users className="mr-2 h-4 w-4" />
-                                                                施設として登録
-                                                            </span>
-                                                            <ArrowRight className="h-4 w-4 ml-3" />
-                                                        </Link>
-                                                    </Button>
-                                                </div>
-                                            </>
-                                        )}
-                                    </>
-                                )}
+                                
                             </div>
                         </SheetContent>
                     </Sheet>
