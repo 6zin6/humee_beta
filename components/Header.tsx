@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button"
 import { MainNav } from "@/components/main-nav"
 import Link from "next/link"
-import { ThemeToggle } from "@/components/theme-toggle"
 import React, { useEffect, useState } from 'react'
 import { usePathname, useRouter } from "next/navigation";
 import LogoutButton from "@/components/ui/logout-button"
@@ -27,6 +26,7 @@ import { Menu, ArrowRight, ChevronDown, ChevronRight , Building, Hospital, Users
 
 const Header = () => {
     const [ session, setSession ] = useState<Session | null>(null)
+    const [ userRole, setUserRole ] = useState<string | null>(null)
     const [ loading, setLoading ] = useState(true)
     const pathname = usePathname()
     const [isOpen, setIsOpen] = useState(false)
@@ -39,6 +39,12 @@ const Header = () => {
             try {
                 const { data: { session } } = await supabase.auth.getSession()
                 setSession(session)
+
+                if (session?.user) {
+                    const role = session.user.user_metadata?.role
+                    setUserRole(role)
+                }
+
             } catch (error) {
                 console.error('セッション取得エラー', error)
             } finally {
@@ -80,7 +86,6 @@ const Header = () => {
                         <Link href="/about" className="text-primary font-bold mr-2 hidden md:block ">
                             Humeeとは
                         </Link>
-                        <ThemeToggle />
 
                         {!isAuthPage && (
                             <div className="hidden md:flex md:items-center md:gap-2">
@@ -143,19 +148,52 @@ const Header = () => {
                                     <Image src="/images/logo.svg" alt="ロゴ" width={150} height={100}/>
                                 </div>
                                 
-                                <div className="space-y-4 flex-1">
-                                    <div className="flex flex-col space-y-2">
+                                <ul className="space-y-4 flex-1 py-6">
+                                    <li className="flex flex-col mb-3">
                                         <Link 
                                             href="/about" 
-                                            className="flex items-center py-6 px-3 rounded-md hover:bg-muted dark:text-white"
+                                            className="flex items-center px-3 rounded-md hover:bg-muted dark:text-white"
                                             onClick={() => setIsOpen(false)}
                                         >
                                             <ChevronRight className="dark:text-white"/>
                                             Humeeとは
                                         </Link>
-                                    </div>
+                                    </li>
+                                    {session ? (
+                                        <>
+                                            {userRole === 'company' && (
+                                                <li className="flex flex-col mb-3">
+                                                    <Link 
+                                                        href="/profile/company" 
+                                                        className="flex items-center px-3 rounded-md hover:bg-muted dark:text-white"
+                                                        onClick={() => setIsOpen(false)}
+                                                    >
+                                                        <ChevronRight className="dark:text-white"/>
+                                                        プロフィール
+                                                    </Link>
+                                                </li>
+                                            )}
+                                        
+                                            {userRole === 'facility' && (
+                                                <li className="flex flex-col mb-3">
+                                                    <Link 
+                                                        href="/profile/facility" 
+                                                        className="flex items-center px-3 rounded-md hover:bg-muted dark:text-white"
+                                                        onClick={() => setIsOpen(false)}
+                                                    >
+                                                        <ChevronRight className="dark:text-white"/>
+                                                        プロフィール
+                                                    </Link>
+                                                </li>
+                                            )}
+                                        </>
+                                        
+                                    ) : (
+                                        <></>
+                                    )}
                                     
-                                </div>
+                                    
+                                </ul>
                                 
                                 <div className="flex-1">
                                     <Button size="lg" variant="secondary" asChild className="w-full mb-4">

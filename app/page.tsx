@@ -272,28 +272,28 @@ export default function Home() {
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-4 w-40"></Image>
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              <div className="bg-background p-6 rounded-lg flex items-start">
+              <div className="bg-background p-6 rounded-lg flex items-start h-[130px] md:h-[120px]">
                 <CheckCircle className="h-6 w-6 text-secondary mr-4 flex-shrink-0 mt-1 dark:text-white" />
                 <div>
                   <p className="font-medium leading-7 dark:text-white">施設専用クラウドソーシングでマッチング精度が高い</p>
                 </div>
               </div>
               
-              <div className="bg-background p-6 rounded-lg flex items-start">
+              <div className="bg-background p-6 rounded-lg flex items-start h-[130px] md:h-[120px]">
                 <CheckCircle className="h-6 w-6 text-secondary mr-4 flex-shrink-0 mt-1 dark:text-white" />
                 <div>
                   <p className="font-medium leading-7 dark:text-white">福祉に配慮した丁寧なマッチングサポート</p>
                 </div>
               </div>
               
-              <div className="bg-background p-6 rounded-lg flex items-start">
+              <div className="bg-background p-6 rounded-lg flex items-start h-[130px] md:h-[120px]">
                 <CheckCircle className="h-6 w-6 text-secondary mr-4 flex-shrink-0 mt-1 dark:text-white" />
                 <div>
                   <p className="font-medium leading-7 dark:text-white">ITスキルや就労経験を積み上げることで、一般就労へのステップアップ</p>
                 </div>
               </div>
               
-              <div className="bg-background p-6 rounded-lg flex items-start">
+              <div className="bg-background p-6 rounded-lg flex items-start h-[130px] md:h-[120px]">
                 <CheckCircle className="h-6 w-6 text-secondary mr-4 flex-shrink-0 mt-1 dark:text-white" />
                 <div>
                   <p className="font-medium leading-7 dark:text-white">利用者、施設、企業それぞれに確かなメリット</p>

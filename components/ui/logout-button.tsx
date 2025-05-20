@@ -38,6 +38,7 @@ const LogoutButton = () => {
         size="sm" 
         onClick={handleLogout}
         disabled={isLoggingOut}
+        className="w-full"
         >
         {isLoggingOut ? 'ログアウト中...' : 'ログアウト'}
         </Button>
